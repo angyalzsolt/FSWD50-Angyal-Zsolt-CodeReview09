@@ -1,0 +1,14 @@
+SELECT customer.first_name, customer_deatail.birth_date, car.type, car.color, payment.payment_amount
+FROM customer
+JOIN customer_deatail
+ON customer.fk_customer_detail = customer_deatail.customer_detail_id
+JOIN reservation
+ON reservation.fk_customer_id = customer.customer_id
+JOIN car
+ON car.car_id = reservation.fk_car_id
+JOIN return_check
+ON return_check.fk_reservation_id = reservation.reservation_id
+JOIN invoice
+ON invoice.fk_return_check_id = return_check.return_check_id
+JOIN payment
+ON payment.fk_invoice_id = invoice.invoice_id
