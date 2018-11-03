@@ -12,3 +12,14 @@ JOIN invoice
 ON invoice.fk_return_check_id = return_check.return_check_id
 JOIN payment
 ON payment.fk_invoice_id = invoice.invoice_id
+
+SELECT customer.first_name, customer_deatail.birth_place, additional_charges.amount, additional_charges.reason
+FROM customer
+JOIN customer_deatail
+ON customer_deatail.customer_detail_id = customer.fk_customer_detail
+JOIN reservation
+ON reservation.fk_customer_id = customer.customer_id
+JOIN return_check
+ON return_check.fk_reservation_id = reservation.reservation_id
+JOIN additional_charges
+ON additional_charges.additional_charges_id = return_check.return_check_id
